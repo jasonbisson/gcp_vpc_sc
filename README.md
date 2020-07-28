@@ -3,29 +3,29 @@ This repository will simulate an adventure of life without VPC Service Controls 
 ## Prerequisites 
 ### Required IAM roles: 
 ```
-gcloud organizations add-iam-policy-binding <your_organization_id> --member="user:<Your_ID>@<your_domain>" --role="roles/accesscontextmanager.policyAdmin"
+$ gcloud organizations add-iam-policy-binding <your_organization_id> --member="user:<Your_ID>@<your_domain>" --role="roles/accesscontextmanager.policyAdmin"
 ```
 ### List active account that will be used with the Demo:
  ```
-	gcloud auth list
+$ gcloud auth list
 ```
 ### Confirm project id to create storage bucket:
 ```
-	gcloud config list project
+$ gcloud config list project
 ```
 ### Create bucket to exfiltrate the empty file:
 ```
-	export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
-	export BUCKET=${PROJECT_ID}-borrow-data
-	gsutil mb gs://$BUCKET
+$ export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+$ export BUCKET=${PROJECT_ID}-borrow-data
+$ gsutil mb gs://$BUCKET
 ```
 ### Confirm IAM permision by running the exfiltration script:
 ```
-	./borrow_data_demo.sh $BUCKET
+$ ./borrow_data_demo.sh $BUCKET
 ```
 ## Enable VPC Service controls:
 ```
-./vpc_sc_demo.sh --dns-domain <your_dns_domain> --service-account <GCP Service account publishing messages>
+$ ./vpc_sc_demo.sh --dns-domain <your_dns_domain> --service-account <GCP Service account publishing messages>
 
 The next 14 prompts will show what happens when VPC Service Controls is enabled/disabled.
 
@@ -39,7 +39,7 @@ The next 14 prompts will show what happens when VPC Service Controls is enabled/
 1. Create a VPC Service Control Perimeter to protect BigQuery and Google Storage
 2. Review project and services protected
 
-	Wait for error messages in borrow data session after 15 minutes
+	Wait for error messages in borrow data session after a couple minutes
 
 3. Update a VPC Service Control Perimeter to protect Pub/Sub
 4. Review project and services protected

@@ -21,11 +21,11 @@ $ gsutil mb gs://$BUCKET
 ```
 ### Confirm IAM permision by running the exfiltration script:
 ```
-$ ./borrow_data_demo.sh $BUCKET
+$ borrow_data_demo.sh $BUCKET
 ```
 ## Enable VPC Service controls:
 ```
-$ ./vpc_sc_demo.sh --dns-domain <your_dns_domain> --service-account <GCP Service account publishing messages>
+$ vpc_sc_demo.sh --dns-domain <your_dns_domain> --service-account <GCP Service account publishing messages>
 
 The next 14 prompts will show what happens when VPC Service Controls is enabled/disabled.
 
